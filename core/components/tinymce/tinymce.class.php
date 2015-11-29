@@ -54,14 +54,19 @@
 			$assetsPath 	= $this->modx->getOption('tinymce.assets_path', $config, $this->modx->getOption('assets_path').'components/tinymce/');
 
 			$this->config = array_merge(array(
-				'basePath'					=> $corePath,
-				'corePath' 					=> $corePath,
-				'assetsPath' 				=> $assetsPath,
-				'jsUrl' 					=> $assetsUrl.'js/',
-				'cssUrl' 					=> $assetsUrl.'css/',
-				'assetsUrl' 				=> $assetsUrl,
-				'helpurl'					=> 'tinymce',
-				'richtext'					=> false
+				'basePath'				=> $corePath,
+				'corePath' 				=> $corePath,
+				'elementsPath' 			=> $corePath.'elements/',
+				'chunksPath' 			=> $corePath.'elements/chunks/',
+				'pluginsPath' 			=> $corePath.'elements/plugins/',
+				'tvsPath' 				=> $corePath.'elements/tvs/',
+				'templatesPath' 		=> $corePath.'templates/',
+				'assetsPath' 			=> $assetsPath,
+				'jsUrl' 				=> $assetsUrl.'js/',
+				'cssUrl' 				=> $assetsUrl.'css/',
+				'assetsUrl' 			=> $assetsUrl,
+				'helpurl'				=> 'tinymce',
+				'richtext'				=> false
 			), $config);
 			
 			$this->mceConfig = array(

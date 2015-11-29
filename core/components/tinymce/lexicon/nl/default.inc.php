@@ -51,4 +51,13 @@
 	$_lang['tinymce_plugin_advimage_desc']							= 'De geavanceerde afbeelding functie gebruiken in de TinyMCE editor, standaard is "Ja". Voor meer informatie zie http://www.tinymce.com/wiki.php/Configuration:image_advtab.';
 	$_lang['tinymce_plugin_toggle_desc']							= 'De TinyMCE editor is door de gebruiker te tonen of te verbergen, standaard is "Ja".';
 
+	$_lang['tinymce.label_toolbar1']								= 'Knoppen eerste toolbar';
+	$_lang['tinymce.label_toolbar1_desc']							= 'De knoppen voor de eerste toolbar in de TinyMCE editor. Knoppen scheiden met een spatie en gebruik | voor een wit ruimte. Voor meer informatie zie http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_toolbar2']								= 'Knoppen tweede toolbar';
+	$_lang['tinymce.label_toolbar2_desc']							= 'De knoppen voor de tweede toolbar in de TinyMCE editor. Knoppen scheiden met een spatie en gebruik | voor een wit ruimte. Voor meer informatie zie http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_toolbar3']								= 'Knoppen derde toolbar';
+	$_lang['tinymce.label_toolbar3_desc']							= 'De knoppen voor de derde toolbar in de TinyMCE editor. Knoppen scheiden met een spatie en gebruik | voor een wit ruimte. Voor meer informatie zie http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_plugins']									= 'Plug-ins';
+	$_lang['tinymce.label_plugins_desc']							= 'De plug-ins die gebruikt worden in de TinyMCE editor. Plug-ins scheiden met een spatie. Voor meer informatie zie http://www.tinymce.com/wiki.php/Configuration:plugins.';
+	
 ?>

@@ -51,4 +51,13 @@
 	$_lang['tinymce_plugin_advimage_desc']							= 'Use the advanced image function in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:image_advtab.';
 	$_lang['tinymce_plugin_toggle_desc']							= 'The TinyMCE editor can be toggled by the user, default is "Yes".';
 
+	$_lang['tinymce.label_toolbar1']								= 'Buttons first toolbar';
+	$_lang['tinymce.label_toolbar1_desc']							= 'The buttons for the first toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_toolbar2']								= 'Buttons second toolbar';
+	$_lang['tinymce.label_toolbar2_desc']							= 'The buttons for the second toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_toolbar3']								= 'Buttons third toolbar';
+	$_lang['tinymce.label_toolbar3_desc']							= 'The buttons for the third toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_plugins']									= 'Plugins';
+	$_lang['tinymce.label_plugins_desc']							= 'The plugins that will be used in the TinyMCE editor. To separate plugins use a space. For morge information see http://www.tinymce.com/wiki.php/Configuration:plugins.';
+	
 ?>

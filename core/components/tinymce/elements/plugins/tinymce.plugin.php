@@ -22,34 +22,44 @@
 	 * Suite 330, Boston, MA 02111-1307 USA
 	 */
 
+	$corePath = $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/');
+
 	if ($modx->event->name == 'OnRichTextEditorRegister') {
     	$modx->event->output('TinyMCE');
 		
     	return;
 	}
 
-	require_once $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'/tinymce.class.php';
+	$modx->lexicon->load('tinymce:default');
+
+	require_once $corePath.'/tinymce.class.php';
 
 	$tinyMCE = new TinyMCE($modx, $scriptProperties);
 
-	$useEditor = $modx->getOption('use_editor', false);
-	$whichEditor = $modx->getOption('which_editor', '');
-
 	switch ($modx->event->name) {
 		case 'OnRichTextEditorInit':
-       		if ($useEditor && $whichEditor == 'TinyMCE') {
-				$script = $tinyMCE->setJavascript('editor');
+		case 'OnRichTextBrowserInit':
+       		if ($modx->getOption('use_editor', false) && 'TinyMCE' == $modx->getOption('which_editor', '')) {
+				if ('OnRichTextEditorInit' == $modx->event->name) {
+					$script = $tinyMCE->setJavascript('editor');
+				} else {
+					$script = $tinyMCE->setJavascript('browser');
+				}
 
 				$modx->event->output($script);
 			}
 
 			break;
-		case 'OnRichTextBrowserInit':
-			if ($useEditor && $whichEditor == 'TinyMCE') {
-				$script = $tinyMCE->setJavascript('browser');
+		case 'OnTVInputRenderList':
+        	$modx->event->output($corePath.'elements/tvs/input/');
 
-				$modx->event->output($script);
-			}
+       		break;
+    	case 'OnTVInputPropertiesList':	
+        	$modx->event->output($corePath.'elements/tvs/inputoptions/');
+
+        	break;
+    	case 'OnManagerPageBefoOnTVInputRenderListreRender':
+        	break;
 		default:
 			break;
 	}
