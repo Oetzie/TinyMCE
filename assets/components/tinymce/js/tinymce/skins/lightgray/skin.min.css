@@ -8,6 +8,10 @@
     filter: alpha(opacity=50);
 }
 
+.mce-toggle {
+	margin: 5px 0 0;
+}
+
 /* Editor */
 
 .mce-tinymce {
@@ -26,7 +30,7 @@
 }
 
 .mce-tinymce .mce-edit-area {
-	margin: 0 0 5px;
+	margin: 0;
 	border: 1px solid #e4e4e4 !important;
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
@@ -41,6 +45,10 @@
 
 .mce-tinymce.mce-focus .mce-edit-area {
 	border-color: #2d86b7 !important;
+}
+
+.mce-tinymce .mce-statusbar {
+	margin: 5px 0 0;
 }
 
 .mce-tinymce .mce-statusbar .mce-path,

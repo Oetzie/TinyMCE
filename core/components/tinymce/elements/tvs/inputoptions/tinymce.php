@@ -3,7 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2015 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2016 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.
@@ -22,15 +22,13 @@
 	 * Suite 330, Boston, MA 02111-1307 USA
 	 */
 	 
-	require_once $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'/tinymce.class.php';
+	$tinyMCE = $modx->getService('tinymce', 'TinyMCE', $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'model/tinymce/');
 
-	$tinyMCE = new TinyMCE($modx);
-
-	$modx->lexicon->load('tinymce:default');
-	$modx->controller->addLexiconTopic('tinymce:default');
+	$modx->lexicon->load($modx->getOption('language', $tinyMCE->config));
+	$modx->controller->addLexiconTopic($modx->getOption('language', $tinyMCE->config));
 	
 	$modx->smarty->assign('tinymce', $modx->lexicon->fetch('tinymce.', true));
 	
-	return $modx->smarty->fetch($tinyMCE->config['templatesPath'].'tinymceinputoptions.tpl');
+	return $modx->smarty->fetch($modx->getOption('templates_path', $tinyMCE->config).'tinymceinputoptions.tpl');
 	
 ?>

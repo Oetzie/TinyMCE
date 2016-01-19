@@ -1,9 +1,9 @@
 <?php
-	
+
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2015 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2016 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.
@@ -22,23 +22,19 @@
 	 * Suite 330, Boston, MA 02111-1307 USA
 	 */
 
-	$corePath = $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/');
-
 	if ($modx->event->name == 'OnRichTextEditorRegister') {
     	$modx->event->output('TinyMCE');
 		
     	return;
 	}
 
-	$modx->lexicon->load('tinymce:default');
-
-	require_once $corePath.'/tinymce.class.php';
-
-	$tinyMCE = new TinyMCE($modx, $scriptProperties);
+	$tinyMCE = $modx->getService('tinymce', 'TinyMCE', $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'model/tinymce/', $scriptProperties);
 
 	switch ($modx->event->name) {
 		case 'OnRichTextEditorInit':
 		case 'OnRichTextBrowserInit':
+			$modx->lexicon->load('tinymce:default');
+			
        		if ($modx->getOption('use_editor', false) && 'TinyMCE' == $modx->getOption('which_editor', '')) {
 				if ('OnRichTextEditorInit' == $modx->event->name) {
 					$script = $tinyMCE->setJavascript('editor');
@@ -51,19 +47,15 @@
 
 			break;
 		case 'OnTVInputRenderList':
-        	$modx->event->output($corePath.'elements/tvs/input/');
+			$modx->lexicon->load('tinymce:default');
+			
+        	$modx->event->output($modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'elements/tvs/input/');
 
        		break;
     	case 'OnTVInputPropertiesList':	
-        	$modx->event->output($corePath.'elements/tvs/inputoptions/');
+        	$modx->event->output($modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'elements/tvs/inputoptions/');
 
         	break;
-    	case 'OnManagerPageBefoOnTVInputRenderListreRender':
-        	break;
-		default:
-			break;
 	}
-
-	return '';
 	
 ?>

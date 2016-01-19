@@ -3,7 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2015 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2016 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.
@@ -44,11 +44,9 @@
 		 * @return Mixed.
 		 */
 		public function process($value, array $params = array()) {
-			$this->modx->controller->addLexiconTopic('tinymce:default');
-			
-			require_once $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path').'components/tinymce/').'/tinymce.class.php';
-		
-			$this->tinyMCE = new TinyMCE($this->modx);
+			$this->tinyMCE = $this->modx->getService('tinymce', 'TinyMCE', $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path').'components/tinymce/').'model/tinymce/');
+
+			$this->modx->controller->addLexiconTopic($this->modx->getOption('language', $this->tinyMCE->config));
 			
 			$this->setPlaceholder('toolbar1', $this->modx->getOption('toolbar1', $params, 'undo redo | bold italic underline strikethrough | styleselect bullist numlist outdent indent'));
 			$this->setPlaceholder('toolbar2', $this->modx->getOption('toolbar2', $params, ''));
@@ -76,7 +74,7 @@
 		 * @return String.
 		 */
 		public function getTemplate() {
-			return $this->tinyMCE->config['templatesPath'].'tinymce.tpl';
+			return $this->modx->getOption('templates_path', $this->tinyMCE->config).'tinymce.tpl';
 		}
 	}
 	

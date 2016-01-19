@@ -1,14 +1,14 @@
 var TinyMCE = {
 	id 		: 'ta',
-	addToggleButton : function(id) {
-		if (undefined != id) {
-			var container = Ext.get(id);
+	addToggleButton : function(editor) {
+		if (undefined != editor) {
+			var container = Ext.get(editor.settings.id);
 			
 			if (!container) {
 				return false;
 			}
 			
-			container = Ext.get(Ext.DomHelper.append(container, {
+			container = Ext.get(Ext.DomHelper.insertAfter(container, {
 	            tag		: 'div',
 	            id		: 'mce-toggle',
 	            class	: 'mce-toggle x-form-check-wrap'
@@ -17,16 +17,19 @@ var TinyMCE = {
 			container.createChild({
 		        tag 	: 'input',
 		        type	: 'checkbox',
-		        id 		: 'mce-toggle-checkbox',
+		        id 		: 'mce-toggle-checkbox-' + editor.settings.id,
 		        class 	: 'x-form-checkbox x-form-field',
-		        checked	: true
+		        checked	: true,
+		        dataid 	: editor.settings.id
 	        }).on('click', function(a, b) {
-		    	tinyMCE.execCommand('mceToggleEditor', true, TinyMCE.id);
+		        if (undefined != (id = this.dom.getAttribute('dataid'))) { 
+			    	tinyMCE.execCommand('mceToggleEditor', true, id);   
+		        }
 		    });
 
 	        container.createChild({
 		        tag 	: 'label',
-		        for		: 'mce-toggle-checkbox',
+		        for		: 'mce-toggle-checkbox-' + editor.settings.id,
 		        class 	: 'x-form-cb-label',
 		        html 	: tinyMCE.translate('WYSIWYG editor')
 	        });
@@ -35,22 +38,22 @@ var TinyMCE = {
 		return false;
 	},
 	setupCallback : function(editor) {
-		editor.on('change', function(e) {
-			editor.save();
+		editor.on('init', function(e) {
+			e.target.save();
 			
-			var resource = Ext.getCmp('modx-panel-resource');
-			
-			if (resource) {
-				resource.markDirty();
+			if (e.target.settings.toggle) {
+				TinyMCE.addToggleButton(e.target);
+			}
+		}).on('change', function(e) {
+			e.target.save();
+
+			if (undefined !== (cmp = Ext.getCmp('modx-panel-resource'))) {
+				cmp.markDirty();
 			}
 		}).on('focus', function(e) {
-			Ext.get(editor.editorContainer).addClass('mce-focus');
+			Ext.get(e.target.editorContainer).addClass('mce-focus');
 		}).on('blur', function(e) {
-			Ext.get(editor.editorContainer).removeClass('mce-focus');
-		}).on('postRender', function(e) {
-			if (editor.id == TinyMCE.id && TinyMCE.config.toggle) {
-				TinyMCE.addToggleButton('modx-content-below');
-			}
+			Ext.get(e.target.editorContainer).removeClass('mce-focus');
 		});
 	},
 	browserCallback : function(field, url, type, win) {
@@ -91,7 +94,7 @@ var TinyMCE = {
     }
 };
 
-MODx.loadRTE = function(id, customConfig) {
+MODx.loadRTE = function(id, customConfig) {	
 	if (TinyMCE.config){
 		var config = {};
 		

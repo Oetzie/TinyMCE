@@ -54,18 +54,22 @@
 			$assetsPath 	= $this->modx->getOption('tinymce.assets_path', $config, $this->modx->getOption('assets_path').'components/tinymce/');
 
 			$this->config = array_merge(array(
-				'basePath'				=> $corePath,
-				'corePath' 				=> $corePath,
-				'elementsPath' 			=> $corePath.'elements/',
-				'chunksPath' 			=> $corePath.'elements/chunks/',
-				'pluginsPath' 			=> $corePath.'elements/plugins/',
-				'tvsPath' 				=> $corePath.'elements/tvs/',
-				'templatesPath' 		=> $corePath.'templates/',
-				'assetsPath' 			=> $assetsPath,
-				'jsUrl' 				=> $assetsUrl.'js/',
-				'cssUrl' 				=> $assetsUrl.'css/',
-				'assetsUrl' 			=> $assetsUrl,
-				'helpurl'				=> 'tinymce',
+				'namespace'				=> $this->modx->getOption('namespace', $config, 'tinymce'),
+				'helpurl'				=> $this->modx->getOption('namespace', $config, 'tinymce'),
+				'language'				=> 'tinymce:default',
+				'base_path'				=> $corePath,
+				'core_path' 			=> $corePath,
+				'model_path' 			=> $corePath.'model/',
+				'processors_path' 		=> $corePath.'processors/',
+				'elements_path' 		=> $corePath.'elements/',
+				'plugins_path' 			=> $corePath.'elements/plugins/',
+				'snippets_path' 		=> $corePath.'elements/snippets/',
+				'tvs_path' 				=> $corePath.'elements/tvs/',
+				'templates_path' 		=> $corePath.'templates/',
+				'assets_path' 			=> $assetsPath,
+				'js_url' 				=> $assetsUrl.'js/',
+				'css_url' 				=> $assetsUrl.'css/',
+				'assets_url' 			=> $assetsUrl,
 				'richtext'				=> false
 			), $config);
 			
@@ -121,15 +125,15 @@
 		public function setJavascript($type = 'editor') {
 			switch ($type) {
 				case 'browser':
-					$this->modx->regClientStartupScript($this->config['jsUrl'].'tinymce/tinymce.min.js');
-					$this->modx->regClientStartupScript($this->config['jsUrl'].'tiny.js');
+					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tinymce/tinymce.min.js');
+					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tiny.js');
 					
 					return 'TinyMCE.browserSelectCallback';
 					
 					break;
 				case 'editor':
-					$this->modx->regClientStartupScript($this->config['jsUrl'].'tinymce/tinymce.min.js');
-					$this->modx->regClientStartupScript($this->config['jsUrl'].'tiny.js');
+					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tinymce/tinymce.min.js');
+					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tiny.js');
 					
 					if ($this->modx->getOption('richtext', $this->config, false)) {
 						$this->modx->regClientStartupHTMLBlock('<script type="text/javascript">
