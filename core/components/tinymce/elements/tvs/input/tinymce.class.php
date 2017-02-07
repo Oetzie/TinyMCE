@@ -3,7 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2016 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.

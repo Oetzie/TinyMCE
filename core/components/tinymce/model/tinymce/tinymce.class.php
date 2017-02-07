@@ -3,7 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2015 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.
@@ -39,7 +39,7 @@
 		 * @acces public.
 		 * @var Array.
 		 */
-		public $mceConfig = array();
+		public $mce = array();
 		
 		/**
 		 * @acces public.
@@ -72,36 +72,91 @@
 				'assets_url' 			=> $assetsUrl,
 				'richtext'				=> false
 			), $config);
-			
-			$this->mceConfig = array(
-				'document_base_url'				=> $this->modx->getOption('base_url', null, MODX_BASE_URL),
-				'image_advtab'					=> $this->modx->getOption('advimag', $config, true),
-				'allow_conditional_comments'	=> $this->modx->getOption('comments', $config, false),
-				'convert_fonts_to_spans'		=> $this->modx->getOption('convert_spans', $config, true),
-				'element_format'				=> $this->modx->getOption('xhtml', $config, true) ? 'xhtml' : 'html',
-				'entities'						=> $this->modx->getOption('entities', $config, ''),
-				'entity_encoding'				=> $this->modx->getOption('encoding', $config, 'named'),
-				'force_hex_style_colors'		=> $this->modx->getOption('force_hex_colors', $config, true),
-				'forced_root_block'				=> $this->modx->getOption('root_block', $config, 'p'),
-				'invalid_elements'				=> $this->modx->getOption('invalid_elements', $config, ''),
-				'remove_trailing_brs'			=> $this->modx->getOption('remove_brs', $config, true),
-				'convert_urls'					=> $this->modx->getOption('convert_urls', $config, true),
-				'relative_urls'					=> $this->modx->getOption('relative_urls', $config, true),
-				'remove_script_host'			=> $this->modx->getOption('remove_script_host', $config, true),
-				'language'						=> $this->modx->getOption('manager_language'),
-				'width'							=> $this->modx->getOption('width', $config, '100%'),
-				'height'						=> $this->modx->getOption('height', $config, '400px'),
-				'menubar'						=> $this->modx->getOption('menubar', $config, false),
-				'statusbar'						=> $this->modx->getOption('statusbar', $config, false),
-				'plugins'						=> $this->modx->getOption('plugins', $config, ''),
-				'toolbar1'						=> $this->modx->getOption('toolbar1', $config, ''),
-				'toolbar2'						=> $this->modx->getOption('toolbar2', $config, ''),
-				'toolbar3'						=> $this->modx->getOption('toolbar3', $config, ''),
-				'resize'						=> $this->modx->getOption('resize', $config, true),
-				'toggle'						=> $this->modx->getOption('toggle', $config, true),
-				'browserUrl'					=> $this->getBrowserUrl()
-			);
 
+			$this->mce = array(
+				'language'						=> $this->modx->getOption('manager_language'),
+				'document_base_url'				=> $this->modx->getOption('base_url', null, MODX_BASE_URL),
+				'allow_conditional_comments'	=> (bool) $this->modx->getOption('allow_conditional_comments', $config, false),
+				'allow_html_in_named_anchor'	=> (bool) $this->modx->getOption('allow_html_in_named_anchor', $config, false),
+				'allow_unsafe_link_target'		=> (bool) $this->modx->getOption('allow_unsafe_link_target', $config, false),
+				'block_formats'					=> $this->modx->getOption('block_formats', $config, ''),
+				'body_class'					=> $this->modx->getOption('body_class', $config, 'tinymce-content'),
+				'body_id'						=> $this->modx->getOption('body_id', $config, 'tinymce-content'),
+				'cache_suffix'					=> $this->modx->getOption('cache_suffix', $config, '?v=4.5.3'),
+				'content_css'					=> $this->modx->getOption('content_css', $config, '/assets/interface/css/tinymce.css'),
+				'content_style'					=> $this->modx->getOption('content_style', $config, ''),
+				'convert_fonts_to_spans'		=> (bool) $this->modx->getOption('convert_fonts_to_spans', $config, true),
+				'custom_elements'				=> $this->modx->getOption('custom_elements', $config, ''),
+				'doctype'						=> $this->modx->getOption('doctype', $config, ''),
+				'element_format'				=> $this->modx->getOption('element_format', $config, 'xhtml'),
+				'elementpath'					=> (bool) $this->modx->getOption('elementpath', $config, false),
+				'encoding'						=> $this->modx->getOption('encoding', $config, 'encoding'),
+				'entities'						=> $this->modx->getOption('entities', $config, ''),
+				'entity_encoding'				=> $this->modx->getOption('entity_encoding', $config, 'named'),
+				'event_root'					=> $this->modx->getOption('event_root', $config, ''),
+				'extended_valid_elements'		=> $this->modx->getOption('extended_valid_elements', $config, ''),
+				'external_plugins'				=> $this->modx->fromJSON($this->modx->getOption('external_plugins', $config, '{}')),
+				'fix_list_elements'				=> $this->modx->getOption('fix_list_elements', $config, ''),
+				'fixed_toolbar_container'		=> $this->modx->getOption('fixed_toolbar_container', $config, ''),
+				'font_formats'					=> $this->modx->getOption('font_formats', $config, ''),
+				'fontsize_formats'				=> $this->modx->getOption('fontsize_formats', $config, ''),
+				'force_hex_style_colors'		=> (bool) $this->modx->getOption('force_hex_style_colors', $config, true),
+				'forced_root_block'				=> $this->modx->getOption('forced_root_block', $config, 'p'),
+				'forced_root_block_attrs'		=> $this->modx->getOption('forced_root_block_attrs', $config, ''),
+				'formats'						=> $this->modx->fromJSON($this->modx->getOption('formats', $config, '[]')),
+				'height'						=> $this->modx->getOption('height', $config, '400px'),
+				'hidden_input'					=> (bool) $this->modx->getOption('hidden_input', $config, true),
+				'image_advtab'					=> (bool) $this->modx->getOption('image_advtab', $config, true),
+				'indentation'					=> $this->modx->getOption('indentation', $config, '30px'),
+				'inline'						=> (bool) $this->modx->getOption('inline', $config, false),
+				'insert_button_items'			=> $this->modx->getOption('insert_button_items', $config, ''),
+				'insert_toolbar'				=> $this->modx->getOption('insert_toolbar', $config, ''),
+				'invalid_elements'				=> $this->modx->getOption('invalid_elements', $config, ''),
+				'invalid_styles'				=> $this->modx->getOption('invalid_styles', $config, ''),
+				'keep_styles'					=> (bool) $this->modx->getOption('keep_styles', $config, false),
+				//'max_height'					=> $this->modx->getOption('max_height', $config, '500px'),
+				//'max_width'					=> $this->modx->getOption('max_width', $config, '100%'),
+				'menu'							=> $this->modx->fromJSON($this->modx->getOption('menu', $config, '{}')),
+				'menubar'						=> $this->modx->getOption('menubar', $config, ''),
+				//'min_height'					=> $this->modx->getOption('min_height', $config, '200px'),
+				//'min_width'					=> $this->modx->getOption('min_width', $config, '300px'),
+				'paste_as_text'					=> (bool) $this->modx->getOption('paste_as_text', $config, true),
+				'plugins'						=> $this->modx->getOption('plugins', $config, 'advlist anchor autolink charmap code contextmenu fullscreen hr image imagetools link lists media pagebreak paste preview tabfocus table visualblocks visualchars'),
+				'preview_styles'				=> $this->modx->getOption('preview_styles', $config, ''),
+				'protect'						=> $this->modx->fromJSON($this->modx->getOption('protect', $config, '[]')),
+				'remove_trailing_brs'			=> (bool) $this->modx->getOption('remove_trailing_brs', $config, true),
+				'removed_menuitems'				=> $this->modx->getOption('removed_menuitems', $config, ''),
+				'resize'						=> $this->modx->getOption('resize', $config, 'both'),	
+				'schema'						=> $this->modx->getOption('schema', $config, 'html5'),
+				'selection_toolbar'				=> $this->modx->getOption('selection_toolbar', $config, ''),
+				'skin'							=> $this->modx->getOption('skin', $config, ''),
+				'skin_url'						=> $this->modx->getOption('skin_url', $config, ''),
+				'statusbar'						=> (bool) $this->modx->getOption('statusbar', $config, false),
+				'style_formats'					=> $this->modx->fromJSON($this->modx->getOption('style_formats', $config, '[]')),
+				'style_formats_autohide'		=> (bool) $this->modx->getOption('style_formats_autohide', $config, false),
+				'style_formats_merge'			=> $this->modx->fromJSON($this->modx->getOption('style_formats_merge', $config, '[]')),
+				'table_advtab'					=> (bool) $this->modx->getOption('table_advtab', $config, true),
+				'theme'							=> $this->modx->getOption('theme', $config, 'modern'),
+				'theme_url'						=> $this->modx->getOption('theme_url', $config, ''),
+				'toolbar'						=> $this->modx->getOption('toolbar', $config, ''),
+				'toolbar1'						=> $this->modx->getOption('toolbar1', $config, 'pastetext | undo redo | bold italic underline strikethrough | styleselect | bullist numlist outdent indent'),
+				'toolbar2'						=> $this->modx->getOption('toolbar2', $config, 'table | link unlink image media anchor | charmap | removeformat subscript superscript | fullscreen code preview visualblocks'),
+				'toolbar3'						=> $this->modx->getOption('toolbar3', $config, ''),
+				'valid_children'				=> $this->modx->getOption('valid_children', $config, ''),
+				'valid_classes'					=> $this->modx->getOption('valid_classes', $config, ''),
+				'valid_elements'				=> $this->modx->getOption('valid_elements', $config, ''),
+				'valid_styles'					=> $this->modx->getOption('valid_styles', $config, ''),
+				'visual_anchor_class'			=> $this->modx->getOption('visual_anchor_class', $config, ''),
+				'visual_table_class'			=> $this->modx->getOption('visual_table_class', $config, ''),
+				'visualblocks_default_state'	=> (bool) $this->modx->getOption('visualblocks_default_state', $config, true),
+				'width'							=> $this->modx->getOption('width', $config, '100%'),
+				'browser_url'					=> $this->getBrowserUrl()
+			);
+			
+			if (null !== ($custom = $this->modx->fromJSON($this->modx->getOption('custom', $config, '{}')))) {
+				$this->mce = array_merge($this->mce, $custom);
+			}
+			
 			if ($resource = $this->modx->getOption('resource', $this->config, false)) {
 				if ($resource->get('richtext')) {
 					$this->config['richtext'] = true;
@@ -138,7 +193,7 @@
 					if ($this->modx->getOption('richtext', $this->config, false)) {
 						$this->modx->regClientStartupHTMLBlock('<script type="text/javascript">
 							Ext.onReady(function() {
-								TinyMCE.config = '.$this->modx->toJSON($this->mceConfig).';
+								TinyMCE.config = '.$this->modx->toJSON($this->mce).';
 								
 								MODx.loadRTE();
 							});
@@ -146,7 +201,7 @@
 					} else {
 						$this->modx->regClientStartupHTMLBlock('<script type="text/javascript">
 							Ext.onReady(function() {
-								TinyMCE.config = '.$this->modx->toJSON($this->mceConfig).';
+								TinyMCE.config = '.$this->modx->toJSON($this->mce).';
 							});
 						</script>');
 					}

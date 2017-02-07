@@ -1,49 +1,8 @@
 var TinyMCE = {
 	id 		: 'ta',
-	addToggleButton : function(editor) {
-		if (undefined != editor) {
-			var container = Ext.get(editor.settings.id);
-			
-			if (!container) {
-				return false;
-			}
-			
-			container = Ext.get(Ext.DomHelper.insertAfter(container, {
-	            tag		: 'div',
-	            id		: 'mce-toggle',
-	            class	: 'mce-toggle x-form-check-wrap'
-	        }));
-			
-			container.createChild({
-		        tag 	: 'input',
-		        type	: 'checkbox',
-		        id 		: 'mce-toggle-checkbox-' + editor.settings.id,
-		        class 	: 'x-form-checkbox x-form-field',
-		        checked	: true,
-		        dataid 	: editor.settings.id
-	        }).on('click', function(a, b) {
-		        if (undefined != (id = this.dom.getAttribute('dataid'))) { 
-			    	tinyMCE.execCommand('mceToggleEditor', true, id);   
-		        }
-		    });
-
-	        container.createChild({
-		        tag 	: 'label',
-		        for		: 'mce-toggle-checkbox-' + editor.settings.id,
-		        class 	: 'x-form-cb-label',
-		        html 	: tinyMCE.translate('WYSIWYG editor')
-	        });
-		}
-		
-		return false;
-	},
 	setupCallback : function(editor) {
 		editor.on('init', function(e) {
 			e.target.save();
-			
-			if (e.target.settings.toggle) {
-				TinyMCE.addToggleButton(e.target);
-			}
 		}).on('change', function(e) {
 			e.target.save();
 
@@ -58,7 +17,7 @@ var TinyMCE = {
 	},
 	browserCallback : function(field, url, type, win) {
         tinyMCE.activeEditor.windowManager.open({
-            file			: TinyMCE.config.browserUrl,
+            file			: TinyMCE.config.browser_url,
             width			: screen.width * 0.7,
             height			: screen.height * 0.6,
             title 			: tinyMCE.translate('MODX browser')

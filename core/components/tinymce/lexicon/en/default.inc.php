@@ -3,7 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2016 by Oene Tjeerd de Bruin <info@oetzie.nl>
+	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
 	 *
 	 * This file is part of TinyMCE, a real estate property listings component
 	 * for MODX Revolution.
@@ -27,37 +27,90 @@
 	
 	$_lang['area_tinymce']											= 'TinyMCE editor';
 	
-	$_lang['tinymce_plugin_comments_desc']							= 'Retain comment elements in the TinyMCE editor, default is "No". For more information see http://www.tinymce.com/wiki.php/Configuration:allow_conditional_comments.';
-	$_lang['tinymce_plugin_convert_spans_desc']						= 'Replace font elements to span elements, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:convert_fonts_to_spans.';
-	$_lang['tinymce_plugin_convert_urls_desc']						= 'Replace URLs to smart URLs in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:convert_urls.';
-	$_lang['tinymce_plugin_xhtml_desc']								= 'Use XHTML for the HTML format in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:element_format.';
-	$_lang['tinymce_plugin_entities_desc']							= 'The codes of the special characters that are used in the TinyMCE editor. The odd items are the character codes and the even items are the character names. For more information see http://www.tinymce.com/wiki.php/Configuration:entities.';
-	$_lang['tinymce_plugin_encoding_desc']							= 'The encoding of the special characters in the TinyMCE editor, default is "Named". For more information see http://www.tinymce.com/wiki.php/Configuration:entity_encoding.';
-	$_lang['tinymce_plugin_force_hex_colors_desc']					= 'Replace RGB codes to HEX codes (replace color: rgb(255, 255, 0) to #FFFF00) in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:force_hex_style_colors.';
-	$_lang['tinymce_plugin_root_block_desc']						= 'The default block element where all paragraphs will be placed in, default is "p". For more information see http://www.tinymce.com/wiki.php/Configuration:forced_root_block.';
-	$_lang['tinymce_plugin_invalid_elements_desc']					= 'The elements that are not allowed in the TinyMCE editor. To separate elements use a space. For more information see http://www.tinymce.com/wiki.php/Configuration:invalid_elements.';
-	$_lang['tinymce_plugin_remove_brs_desc']						= 'Delete the br elements of the end of the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:remove_trailing_brs.';
-	$_lang['tinymce_plugin_relative_urls_desc']						= 'The URLs are relative to the base URL in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:relative_urls.';
-	$_lang['tinymce_plugin_remove_script_host_desc']				= 'The URLs are used with out the script host in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:remove_script_host.';
-	$_lang['tinymce_plugin_width_desc']								= 'The width of the TinyMCE editor, default is "100%".';
-	$_lang['tinymce_plugin_height_desc']							= 'The height of the TinyMCE editor, default is "400px".';
-	$_lang['tinymce_plugin_menubar_desc']							= 'Display the menubar in the TinyMCE editor, default is "No". For more information see http://www.tinymce.com/wiki.php/Configuration:menubar.';
-	$_lang['tinymce_plugin_statusbar_desc']							= 'Display the statusbar in the TinyMCE editor, default is "No". For more information see http://www.tinymce.com/wiki.php/Configuration:statusbar.';
-	$_lang['tinymce_plugin_toolbar1_desc']							= 'The buttons for the first toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
-	$_lang['tinymce_plugin_toolbar2_desc']							= 'The buttons for the second toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
-	$_lang['tinymce_plugin_toolbar3_desc']							= 'The buttons for the third toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
-	$_lang['tinymce_plugin_plugins_desc']							= 'The plugins that will be used in the TinyMCE editor. To separate plugins use a space. For morge information see http://www.tinymce.com/wiki.php/Configuration:plugins.';
-	$_lang['tinymce_plugin_resize_desc']							= 'The TinyMCE editor is resizable, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:resize.';
-	$_lang['tinymce_plugin_advimage_desc']							= 'Use the advanced image function in the TinyMCE editor, default is "Yes". For more information see http://www.tinymce.com/wiki.php/Configuration:image_advtab.';
-	$_lang['tinymce_plugin_toggle_desc']							= 'The TinyMCE editor can be toggled by the user, default is "Yes".';
+	$_lang['tinymce_plugin_allow_conditional_comments_desc']		= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_conditional_comments.';
+	$_lang['tinymce_plugin_allow_html_in_named_anchor_desc']		= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_html_in_named_anchor.';
+	$_lang['tinymce_plugin_allow_unsafe_link_target_desc']			= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_unsafe_link_target.';
+	$_lang['tinymce_plugin_block_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#block_formats.';
+	$_lang['tinymce_plugin_body_class_desc']						= 'Default is "tinymce-content". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#body_class.';
+	$_lang['tinymce_plugin_body_id_desc']							= 'Default is "tinymyce-content". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#body_id.';
+	$_lang['tinymce_plugin_cache_suffix_desc']						= 'Default is "?v=4.5.3". For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#cache_suffix.';
+	$_lang['tinymce_plugin_content_css_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#content_css.';
+	$_lang['tinymce_plugin_content_style_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#content_style.';
+	$_lang['tinymce_plugin_convert_fonts_to_spans_desc']			= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#convert_fonts_to_spans.';
+	$_lang['tinymce_plugin_custom_desc']							= 'Een geldig JSON formaat met instellingen die niet tussen de standaard instellingen staan. Bijvoorbeeld plugin instellingen.';
+	$_lang['tinymce_plugin_custom_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#custom_elements.';
+	$_lang['tinymce_plugin_doctype_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#doctype.';
+	$_lang['tinymce_plugin_element_format_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#element_format.';
+	$_lang['tinymce_plugin_elementpath_desc']						= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#elementpath.';
+	$_lang['tinymce_plugin_encoding_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#encoding.';
+	$_lang['tinymce_plugin_entities_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#entities.';
+	$_lang['tinymce_plugin_entity_encoding_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#entity_encoding.';
+	$_lang['tinymce_plugin_event_root_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#event_root.';
+	$_lang['tinymce_plugin_extended_valid_elements_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#extended_valid_elements.';
+	$_lang['tinymce_plugin_external_plugins_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#external_plugins.';
+	$_lang['tinymce_plugin_fix_list_elements_desc']					= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#fix_list_elements.';
+	$_lang['tinymce_plugin_fixed_toolbar_container_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#fixed_toolbar_container.';
+	$_lang['tinymce_plugin_font_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#font_formats.';
+	$_lang['tinymce_plugin_fontsize_formats_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#fontsize_formats.';
+	$_lang['tinymce_plugin_force_hex_style_colors_desc']			= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#force_hex_style_colors.';
+	$_lang['tinymce_plugin_forced_root_block_desc']					= 'Default is "p". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#forced_root_block.';
+	$_lang['tinymce_plugin_forced_root_block_attrs_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#forced_root_block_attrs.';
+	$_lang['tinymce_plugin_formats_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#formats.';
+	$_lang['tinymce_plugin_height_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#height.';
+	$_lang['tinymce_plugin_hidden_input_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#hidden_input.';
+	$_lang['tinymce_plugin_image_advtab_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/image/#image_advtab.';
+	$_lang['tinymce_plugin_indentation_desc']						= 'Default is "30px". For more information go to https://www.tinymce.com/docs/configure/content-formatting/#indentation.';
+	$_lang['tinymce_plugin_inline_desc']							= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#inline.';
+	$_lang['tinymce_plugin_insert_button_items_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#insert_button_items.';
+	$_lang['tinymce_plugin_insert_toolbar_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#insert_toolbar.';
+	$_lang['tinymce_plugin_invalid_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#invalid_elements.';
+	$_lang['tinymce_plugin_invalid_styles_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#invalid_styles.';
+	$_lang['tinymce_plugin_keep_styles_desc']						= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#keep_styles.';
+	$_lang['tinymce_plugin_max_height_desc']						= 'Default is "500px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#max_height.';
+	$_lang['tinymce_plugin_max_width_desc']							= 'Default is "100%". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#max_width.';
+	$_lang['tinymce_plugin_menu_desc']								= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#menu.';
+	$_lang['tinymce_plugin_menubar_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#menubar.';
+	$_lang['tinymce_plugin_min_height_desc']						= 'Default is "200px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#min_height.';
+	$_lang['tinymce_plugin_min_width_desc']							= 'Default is "300px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#min_width.';
+	$_lang['tinymce_plugin_paste_as_text_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/paste/#paste_as_text.';
+	$_lang['tinymce_plugin_plugins_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#plugins.';
+	$_lang['tinymce_plugin_preview_styles_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#preview_styles.';
+	$_lang['tinymce_plugin_protect_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#protect.';
+	$_lang['tinymce_plugin_remove_trailing_brs_desc']				= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#remove_trailing_brs.';
+	$_lang['tinymce_plugin_removed_menuitems_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#removed_menuitems.';
+	$_lang['tinymce_plugin_resize_desc']							= 'Default is "both". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#resize.';
+	$_lang['tinymce_plugin_schema_desc']							= 'Default is "html5". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#schema.';
+	$_lang['tinymce_plugin_selection_toolbar_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#selection_toolbar.';
+	$_lang['tinymce_plugin_skin_desc']								= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#skin.';
+	$_lang['tinymce_plugin_skin_url_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#skin_url.';
+	$_lang['tinymce_plugin_statusbar_desc']							= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#statusbar.';
+	$_lang['tinymce_plugin_style_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats.';
+	$_lang['tinymce_plugin_style_formats_autohide_desc']			= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats_autohide.';
+	$_lang['tinymce_plugin_style_formats_merge_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats_merge.';
+	$_lang['tinymce_plugin_table_advtab_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/table/#table_advtab.';
+	$_lang['tinymce_plugin_theme_desc']								= 'Default is "modern". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#theme.';
+	$_lang['tinymce_plugin_theme_url_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#theme_url.';
+	$_lang['tinymce_plugin_toolbar_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbar.';
+	$_lang['tinymce_plugin_toolbar1_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
+	$_lang['tinymce_plugin_toolbar2_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
+	$_lang['tinymce_plugin_toolbar3_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
+	$_lang['tinymce_plugin_valid_children_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_children.';
+	$_lang['tinymce_plugin_valid_classes_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_classes.';
+	$_lang['tinymce_plugin_valid_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_elements.';
+	$_lang['tinymce_plugin_valid_styles_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_styles.';
+	$_lang['tinymce_plugin_visual_desc']							= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual.';
+	$_lang['tinymce_plugin_visual_anchor_class_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual_anchor_class.';
+	$_lang['tinymce_plugin_visual_table_class_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual_table_class.';
+	$_lang['tinymce_plugin_visualblocks_default_state_desc']		= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/visualblocks/#visualblocks_default_state.';
+	$_lang['tinymce_plugin_width_desc']								= 'Default is "100%". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#width.';
 
 	$_lang['tinymce.label_toolbar1']								= 'Buttons first toolbar';
-	$_lang['tinymce.label_toolbar1_desc']							= 'The buttons for the first toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
-	$_lang['tinymce.label_toolbar2']								= 'Buttons second toolbar';
-	$_lang['tinymce.label_toolbar2_desc']							= 'The buttons for the second toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
+	$_lang['tinymce.label_toolbar1_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
+	$_lang['tinymce.label_toolbar2']								= 'Buttons seconds toolbar';
+	$_lang['tinymce.label_toolbar2_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
 	$_lang['tinymce.label_toolbar3']								= 'Buttons third toolbar';
-	$_lang['tinymce.label_toolbar3_desc']							= 'The buttons for the third toolbar in the TinyMCE editor. To separate buttons use a space and use a | for a white space. For more information see http://www.tinymce.com/wiki.php/Configuration:toolbar.';
-	$_lang['tinymce.label_plugins']									= 'Plugins';
-	$_lang['tinymce.label_plugins_desc']							= 'The plugins that will be used in the TinyMCE editor. To separate plugins use a space. For morge information see http://www.tinymce.com/wiki.php/Configuration:plugins.';
+	$_lang['tinymce.label_toolbar3_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
+	$_lang['tinymce.label_plugins']									= 'Plug-ins';
+	$_lang['tinymce.label_plugins_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#plugins.';
 	
 ?>
