@@ -551,6 +551,15 @@
 	        'lexicon' 	=> PKG_NAME_LOWER.':default'
 	    ),
 	    array(
+	        'name' 		=> 'templates',
+	        'desc' 		=> 'tinymce_plugin_templates_desc',
+	        'type' 		=> 'textfield',
+	        'options' 	=> '',
+	        'value'		=> '',
+	        'area'		=> PKG_NAME_LOWER,
+	        'lexicon' 	=> PKG_NAME_LOWER.':default'
+	    ),
+	    array(
 	        'name' 		=> 'theme',
 	        'desc' 		=> 'tinymce_plugin_theme_desc',
 	        'type' 		=> 'textfield',

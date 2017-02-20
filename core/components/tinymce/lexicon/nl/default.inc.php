@@ -88,6 +88,7 @@
 	$_lang['tinymce_plugin_style_formats_autohide_desc']			= 'Standaard is "Nee". Voor meer informatie zie https://www.tinymce.com/docs/configure/content-formatting/#style_formats_autohide.';
 	$_lang['tinymce_plugin_style_formats_merge_desc']				= 'Voor meer informatie zie https://www.tinymce.com/docs/configure/content-formatting/#style_formats_merge.';
 	$_lang['tinymce_plugin_table_advtab_desc']						= 'Standaard is "Ja". Voor meer informatie zie https://www.tinymce.com/docs/plugins/table/#table_advtab.';
+	$_lang['tinymce_plugin_templates_desc']							= 'Voor meer informatie zie https://www.tinymce.com/docs/plugins/template/#templates.';
 	$_lang['tinymce_plugin_theme_desc']								= 'Standaard is "modern". Voor meer informatie zie https://www.tinymce.com/docs/configure/editor-appearance/#theme.';
 	$_lang['tinymce_plugin_theme_url_desc']							= 'Voor meer informatie zie https://www.tinymce.com/docs/configure/editor-appearance/#theme_url.';
 	$_lang['tinymce_plugin_toolbar_desc']							= 'Voor meer informatie zie https://www.tinymce.com/docs/configure/editor-appearance/#toolbar.';
