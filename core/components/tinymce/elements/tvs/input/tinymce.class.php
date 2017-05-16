@@ -3,10 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
-	 *
-	 * This file is part of TinyMCE, a real estate property listings component
-	 * for MODX Revolution.
+	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
 	 *
 	 * TinyMCE is free software; you can redistribute it and/or modify it under
 	 * the terms of the GNU General Public License as published by the Free Software
@@ -27,7 +24,7 @@
 		 * @acces public.
 		 * @var Object.
 		 */
-		public $tinyMCE = null;
+		public $tinymce = null;
 		
 		/**
 		 * @acces public.
@@ -44,10 +41,8 @@
 		 * @return Mixed.
 		 */
 		public function process($value, array $params = array()) {
-			$this->tinyMCE = $this->modx->getService('tinymce', 'TinyMCE', $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path').'components/tinymce/').'model/tinymce/');
+			$this->tinymce = $this->modx->getService('tinymce', 'TinyMCE', $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path').'components/tinymce/').'model/tinymce/');
 
-			$this->modx->controller->addLexiconTopic($this->modx->getOption('language', $this->tinyMCE->config));
-			
 			$this->setPlaceholder('toolbar1', $this->modx->getOption('toolbar1', $params, 'undo redo | bold italic underline strikethrough | styleselect bullist numlist outdent indent'));
 			$this->setPlaceholder('toolbar2', $this->modx->getOption('toolbar2', $params, ''));
 			$this->setPlaceholder('toolbar3', $this->modx->getOption('toolbar3', $params, ''));
@@ -70,11 +65,11 @@
 		}
 		
 		/**
-		 * @acces public.
+		 * @access public.
 		 * @return String.
 		 */
 		public function getTemplate() {
-			return $this->modx->getOption('templates_path', $this->tinyMCE->config).'tinymce.tpl';
+			return $this->tinymce->config['templates_path'].'tinymce.tpl';
 		}
 	}
 	

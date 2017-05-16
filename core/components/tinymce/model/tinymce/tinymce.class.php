@@ -3,10 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
-	 *
-	 * This file is part of TinyMCE, a real estate property listings component
-	 * for MODX Revolution.
+	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
 	 *
 	 * TinyMCE is free software; you can redistribute it and/or modify it under
 	 * the terms of the GNU General Public License as published by the Free Software
@@ -24,19 +21,19 @@
 
 	class TinyMCE {
 		/**
-		 * @acces public.
+		 * @access public.
 		 * @var Object.
 		 */
 		public $modx;
 		
 		/**
-		 * @acces public.
+		 * @access public.
 		 * @var Array.
 		 */
 		public $config = array();
 		
 		/**
-		 * @acces public.
+		 * @access public.
 		 * @var Array.
 		 */
 		public $mce = array();
@@ -46,7 +43,7 @@
 		 * @param Object $modx.
 		 * @param Array $config.
 		 */
-		function __construct(modX &$modx, array $config = array()) {
+		public function __construct(modX &$modx, array $config = array()) {
 			$this->modx =& $modx;
 			
 			$corePath 		= $this->modx->getOption('tinymce.core_path', $config, $this->modx->getOption('core_path').'components/tinymce/');
@@ -55,8 +52,7 @@
 
 			$this->config = array_merge(array(
 				'namespace'				=> $this->modx->getOption('namespace', $config, 'tinymce'),
-				'helpurl'				=> $this->modx->getOption('namespace', $config, 'tinymce'),
-				'language'				=> 'tinymce:default',
+				'lexicons'				=> array('tinymce:default'),
 				'base_path'				=> $corePath,
 				'core_path' 			=> $corePath,
 				'model_path' 			=> $corePath.'model/',
@@ -72,6 +68,16 @@
 				'assets_url' 			=> $assetsUrl,
 				'richtext'				=> false
 			), $config);
+			
+			$this->modx->addPackage('tinymce', $this->config['model_path']);
+			
+			if (is_array($this->config['lexicons'])) {
+				foreach ($this->config['lexicons'] as $lexicon) {
+					$this->modx->lexicon->load($lexicon);
+				}
+			} else {
+				$this->modx->lexicon->load($this->config['lexicons']);
+			}
 
 			$this->mce = array(
 				'language'						=> $this->modx->getOption('manager_language'),
@@ -166,30 +172,22 @@
 		}
 		
 		/**
-		 * @acces public.
-		 * @return String.
-		 */
-		public function getHelpUrl() {
-			return $this->config['helpurl'];
-		}
-		
-		/**
-		 * @acces public.
+		 * @access public.
 		 * @param String type.
 		 * @return String.
 		 */
 		public function setJavascript($type = 'editor') {
 			switch ($type) {
 				case 'browser':
-					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tinymce/tinymce.min.js');
-					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tiny.js');
+					$this->modx->regClientStartupScript($this->config['js_url'].'tinymce/tinymce.min.js');
+					$this->modx->regClientStartupScript($this->config['js_url'].'tiny.js');
 					
 					return 'TinyMCE.browserSelectCallback';
 					
 					break;
 				case 'editor':
-					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tinymce/tinymce.min.js');
-					$this->modx->regClientStartupScript($this->modx->getOption('js_url', $this->config).'tiny.js');
+					$this->modx->regClientStartupScript($this->config['js_url'].'tinymce/tinymce.min.js');
+					$this->modx->regClientStartupScript($this->config['js_url'].'tiny.js');
 					
 					if ($this->modx->getOption('richtext', $this->config, false)) {
 						$this->modx->regClientStartupHTMLBlock('<script type="text/javascript">
@@ -214,7 +212,7 @@
 		}
 		
 		/**
-		 * @acces public.
+		 * @access public.
 		 * @return String.
 		 */
 		public function getBrowserUrl() {

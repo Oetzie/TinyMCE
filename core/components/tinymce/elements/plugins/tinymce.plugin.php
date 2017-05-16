@@ -3,10 +3,7 @@
 	/**
 	 * TinyMCE
 	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <info@oetzie.nl>
-	 *
-	 * This file is part of TinyMCE, a real estate property listings component
-	 * for MODX Revolution.
+	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
 	 *
 	 * TinyMCE is free software; you can redistribute it and/or modify it under
 	 * the terms of the GNU General Public License as published by the Free Software
@@ -28,18 +25,16 @@
     	return;
 	}
 
-	$tinyMCE = $modx->getService('tinymce', 'TinyMCE', $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'model/tinymce/', $scriptProperties);
+	$tinymce = $modx->getService('tinymce', 'TinyMCE', $modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'model/tinymce/', $scriptProperties);
 
 	switch ($modx->event->name) {
 		case 'OnRichTextEditorInit':
 		case 'OnRichTextBrowserInit':
-			$modx->lexicon->load('tinymce:default');
-			
-       		if ($modx->getOption('use_editor', false) && 'TinyMCE' == $modx->getOption('which_editor', '')) {
+    		if ($modx->getOption('use_editor', false) && 'TinyMCE' == $modx->getOption('which_editor', '')) {
 				if ('OnRichTextEditorInit' == $modx->event->name) {
-					$script = $tinyMCE->setJavascript('editor');
+					$script = $tinymce->setJavascript('editor');
 				} else {
-					$script = $tinyMCE->setJavascript('browser');
+					$script = $tinymce->setJavascript('browser');
 				}
 
 				$modx->event->output($script);
@@ -47,8 +42,6 @@
 
 			break;
 		case 'OnTVInputRenderList':
-			$modx->lexicon->load('tinymce:default');
-			
         	$modx->event->output($modx->getOption('tinymce.core_path', null, $modx->getOption('core_path').'components/tinymce/').'elements/tvs/input/');
 
        		break;
