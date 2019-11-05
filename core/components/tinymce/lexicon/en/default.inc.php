@@ -1,114 +1,107 @@
 <?php
 
-	/**
-	 * TinyMCE
-	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
-	 *
-	 * TinyMCE is free software; you can redistribute it and/or modify it under
-	 * the terms of the GNU General Public License as published by the Free Software
-	 * Foundation; either version 2 of the License, or (at your option) any later
-	 * version.
-	 *
-	 * TinyMCE is distributed in the hope that it will be useful, but WITHOUT ANY
-	 * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-	 * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-	 *
-	 * You should have received a copy of the GNU General Public License along with
-	 * TinyMCE; if not, write to the Free Software Foundation, Inc., 59 Temple Place,
-	 * Suite 330, Boston, MA 02111-1307 USA
-	 */
-	 
-	$_lang['tinymce'] 												= 'TinyMCE editor';
-	$_lang['tinymce.desc'] 											= 'TinyMCE editor';
-	
-	$_lang['area_tinymce']											= 'TinyMCE editor';
-	
-	$_lang['tinymce_plugin_allow_conditional_comments_desc']		= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_conditional_comments.';
-	$_lang['tinymce_plugin_allow_html_in_named_anchor_desc']		= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_html_in_named_anchor.';
-	$_lang['tinymce_plugin_allow_unsafe_link_target_desc']			= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#allow_unsafe_link_target.';
-	$_lang['tinymce_plugin_block_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#block_formats.';
-	$_lang['tinymce_plugin_body_class_desc']						= 'Default is "tinymce-content". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#body_class.';
-	$_lang['tinymce_plugin_body_id_desc']							= 'Default is "tinymyce-content". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#body_id.';
-	$_lang['tinymce_plugin_cache_suffix_desc']						= 'Default is "?v=4.5.3". For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#cache_suffix.';
-	$_lang['tinymce_plugin_content_css_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#content_css.';
-	$_lang['tinymce_plugin_content_style_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#content_style.';
-	$_lang['tinymce_plugin_convert_fonts_to_spans_desc']			= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#convert_fonts_to_spans.';
-	$_lang['tinymce_plugin_custom_desc']							= 'Een geldig JSON formaat met instellingen die niet tussen de standaard instellingen staan. Bijvoorbeeld plugin instellingen.';
-	$_lang['tinymce_plugin_custom_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#custom_elements.';
-	$_lang['tinymce_plugin_doctype_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#doctype.';
-	$_lang['tinymce_plugin_element_format_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#element_format.';
-	$_lang['tinymce_plugin_elementpath_desc']						= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#elementpath.';
-	$_lang['tinymce_plugin_encoding_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#encoding.';
-	$_lang['tinymce_plugin_entities_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#entities.';
-	$_lang['tinymce_plugin_entity_encoding_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#entity_encoding.';
-	$_lang['tinymce_plugin_event_root_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#event_root.';
-	$_lang['tinymce_plugin_extended_valid_elements_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#extended_valid_elements.';
-	$_lang['tinymce_plugin_external_plugins_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#external_plugins.';
-	$_lang['tinymce_plugin_fix_list_elements_desc']					= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#fix_list_elements.';
-	$_lang['tinymce_plugin_fixed_toolbar_container_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#fixed_toolbar_container.';
-	$_lang['tinymce_plugin_font_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#font_formats.';
-	$_lang['tinymce_plugin_fontsize_formats_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#fontsize_formats.';
-	$_lang['tinymce_plugin_force_hex_style_colors_desc']			= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#force_hex_style_colors.';
-	$_lang['tinymce_plugin_forced_root_block_desc']					= 'Default is "p". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#forced_root_block.';
-	$_lang['tinymce_plugin_forced_root_block_attrs_desc']			= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#forced_root_block_attrs.';
-	$_lang['tinymce_plugin_formats_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#formats.';
-	$_lang['tinymce_plugin_height_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#height.';
-	$_lang['tinymce_plugin_hidden_input_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#hidden_input.';
-	$_lang['tinymce_plugin_image_advtab_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/image/#image_advtab.';
-	$_lang['tinymce_plugin_indentation_desc']						= 'Default is "30px". For more information go to https://www.tinymce.com/docs/configure/content-formatting/#indentation.';
-	$_lang['tinymce_plugin_inline_desc']							= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#inline.';
-	$_lang['tinymce_plugin_insert_button_items_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#insert_button_items.';
-	$_lang['tinymce_plugin_insert_toolbar_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#insert_toolbar.';
-	$_lang['tinymce_plugin_invalid_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#invalid_elements.';
-	$_lang['tinymce_plugin_invalid_styles_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#invalid_styles.';
-	$_lang['tinymce_plugin_keep_styles_desc']						= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#keep_styles.';
-	$_lang['tinymce_plugin_max_height_desc']						= 'Default is "500px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#max_height.';
-	$_lang['tinymce_plugin_max_width_desc']							= 'Default is "100%". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#max_width.';
-	$_lang['tinymce_plugin_menu_desc']								= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#menu.';
-	$_lang['tinymce_plugin_menubar_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#menubar.';
-	$_lang['tinymce_plugin_min_height_desc']						= 'Default is "200px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#min_height.';
-	$_lang['tinymce_plugin_min_width_desc']							= 'Default is "300px". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#min_width.';
-	$_lang['tinymce_plugin_paste_as_text_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/paste/#paste_as_text.';
-	$_lang['tinymce_plugin_plugins_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#plugins.';
-	$_lang['tinymce_plugin_preview_styles_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#preview_styles.';
-	$_lang['tinymce_plugin_protect_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#protect.';
-	$_lang['tinymce_plugin_remove_trailing_brs_desc']				= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#remove_trailing_brs.';
-	$_lang['tinymce_plugin_removed_menuitems_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#removed_menuitems.';
-	$_lang['tinymce_plugin_resize_desc']							= 'Default is "both". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#resize.';
-	$_lang['tinymce_plugin_schema_desc']							= 'Default is "html5". For more information go to https://www.tinymce.com/docs/configure/content-filtering/#schema.';
-	$_lang['tinymce_plugin_selection_toolbar_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#selection_toolbar.';
-	$_lang['tinymce_plugin_skin_desc']								= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#skin.';
-	$_lang['tinymce_plugin_skin_url_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#skin_url.';
-	$_lang['tinymce_plugin_statusbar_desc']							= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#statusbar.';
-	$_lang['tinymce_plugin_style_formats_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats.';
-	$_lang['tinymce_plugin_style_formats_autohide_desc']			= 'Default is "No". For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats_autohide.';
-	$_lang['tinymce_plugin_style_formats_merge_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-formatting/#style_formats_merge.';
-	$_lang['tinymce_plugin_table_advtab_desc']						= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/table/#table_advtab.';
-	$_lang['tinymce_plugin_templates_desc']							= 'For more information go to https://www.tinymce.com/docs/plugins/template/#templates.';
-	$_lang['tinymce_plugin_theme_desc']								= 'Default is "modern". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#theme.';
-	$_lang['tinymce_plugin_theme_url_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#theme_url.';
-	$_lang['tinymce_plugin_toolbar_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbar.';
-	$_lang['tinymce_plugin_toolbar1_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce_plugin_toolbar2_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce_plugin_toolbar3_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce_plugin_valid_children_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_children.';
-	$_lang['tinymce_plugin_valid_classes_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_classes.';
-	$_lang['tinymce_plugin_valid_elements_desc']					= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_elements.';
-	$_lang['tinymce_plugin_valid_styles_desc']						= 'For more information go to https://www.tinymce.com/docs/configure/content-filtering/#valid_styles.';
-	$_lang['tinymce_plugin_visual_desc']							= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual.';
-	$_lang['tinymce_plugin_visual_anchor_class_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual_anchor_class.';
-	$_lang['tinymce_plugin_visual_table_class_desc']				= 'For more information go to https://www.tinymce.com/docs/configure/content-appearance/#visual_table_class.';
-	$_lang['tinymce_plugin_visualblocks_default_state_desc']		= 'Default is "Yes". For more information go to https://www.tinymce.com/docs/plugins/visualblocks/#visualblocks_default_state.';
-	$_lang['tinymce_plugin_width_desc']								= 'Default is "100%". For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#width.';
+/**
+ * TinyMCE
+ *
+ * Copyright 2019 by Oene Tjeerd de Bruin <modx@oetzie.nl>
+ */
 
-	$_lang['tinymce.label_toolbar1']								= 'Buttons first toolbar';
-	$_lang['tinymce.label_toolbar1_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce.label_toolbar2']								= 'Buttons seconds toolbar';
-	$_lang['tinymce.label_toolbar2_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce.label_toolbar3']								= 'Buttons third toolbar';
-	$_lang['tinymce.label_toolbar3_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/editor-appearance/#toolbarn.';
-	$_lang['tinymce.label_plugins']									= 'Plug-ins';
-	$_lang['tinymce.label_plugins_desc']							= 'For more information go to https://www.tinymce.com/docs/configure/integration-and-setup/#plugins.';
-	
-?>
+$_lang['tinymce']                                           = 'TinyMCE editor';
+$_lang['tinymce.desc']                                      = 'Manage the TinyMCE editor.';
+
+$_lang['area_tinymce']                                      = 'TinyMCE editor';
+
+$_lang['setting_tinymce.branding_url']                      = 'Branding';
+$_lang['setting_tinymce.branding_url_desc']                 = 'The URL of the branding button, if the URL is empty the branding button won\'t be shown.';
+$_lang['setting_tinymce.branding_url_help']                 = 'Branding (help)';
+$_lang['setting_tinymce.branding_url_help_desc']            = 'The URL of the branding help button, if the URL is empty the branding help button won\'t be shown.';
+
+$_lang['tinymce.tv_label_config']                           = 'TinyMCE config';
+$_lang['tinymce.tv_label_config_desc']                      = 'The config to use.';
+
+$_lang['tinymce.config']                                    = 'Config';
+$_lang['tinymce.configs']                                   = 'Configs';
+$_lang['tinymce.configs_desc']                              = 'Manage here the different configs for the TinyMCE editors.';
+$_lang['tinymce.config_create']                             = 'Create config';
+$_lang['tinymce.config_update']                             = 'Update config';
+$_lang['tinymce.config_export']                             = 'Export config';
+$_lang['tinymce.config_remove']                             = 'Delete config';
+$_lang['tinymce.config_remove_confirm']                     = 'Are you sure you want to delete this config?';
+$_lang['tinymce.config_manage']                             = 'Manage config';
+$_lang['tinymce.configs_import']                            = 'Import configs';
+$_lang['tinymce.configs_export']                            = 'Export configs';
+
+$_lang['tinymce.label_config_id']                           = 'ID';
+$_lang['tinymce.label_config_id_desc']                      = '';
+$_lang['tinymce.label_config_name']                         = 'Name';
+$_lang['tinymce.label_config_name_desc']                    = 'The name of the config.';
+$_lang['tinymce.label_config_description']                  = 'Description';
+$_lang['tinymce.label_config_description_desc']             = 'The description of the config.';
+$_lang['tinymce.label_config_default']                      = 'System default';
+$_lang['tinymce.label_config_default_desc']                 = 'This config is the system defaut config.';
+
+$_lang['tinymce.label_import_file']                         = 'File';
+$_lang['tinymce.label_import_file_desc']                    = 'Select a valid XML file to import the configs.';
+$_lang['tinymce.label_import_overwrite_default']            = 'Overrule system default config';
+$_lang['tinymce.label_import_overwrite_default_desc']       = 'If checked the system default config could be overwritten.';
+
+$_lang['tinymce.section_config']                            = 'Config';
+$_lang['tinymce.section_config_desc']                       = 'Manage here the config of the TinyMCE editor.';
+$_lang['tinymce.section_demo']                              = 'Demo (live)';
+$_lang['tinymce.section_demo_desc']                         = 'Each modification of the config above will be updated in the demo below.';
+
+$_lang['tinymce.config_plugins']                            = 'Plugins';
+$_lang['tinymce.config_plugins_desc']                       = 'This option allows you to specify which plugins TinyMCE will attempt to load when starting up. By default, TinyMCE will not load any plugins. <a href="https://www.tiny.cloud/docs/configure/integration-and-setup/#plugins" target="_blank">More information</a>';
+$_lang['tinymce.config_external_plugins']                   = 'External plugins';
+$_lang['tinymce.config_external_plugins_desc']              = 'This option allows you to specify a URL based location of plugins outside of the normal TinyMCE plugins directory. <a href="https://www.tiny.cloud/docs/configure/integration-and-setup/#external_plugins" target="_blank">More information</a>';
+$_lang['tinymce.config_block_formats']                      = 'Block formats';
+$_lang['tinymce.config_block_formats_desc']                 = 'This option defines the formats to be displayed in the <code>formatselect</code> dropdown toolbar button and the <code>blockformats</code> menu item. Each item in the string should be separated by semi-colons and specified using the form <code>title=block</code>. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#block_formats" target="_blank">More information</a>';
+$_lang['tinymce.config_font_formats']                       = 'Font formats';
+$_lang['tinymce.config_font_formats_desc']                  = 'This option defines the fonts to be displayed in the <code>fontselect</code> dropdown toolbar button and the <code>fontformats</code> menu item. Each item in the string should be separated by semi-colons and specified using the form of: <code>title=font-family</code>. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#font_formats" target="_blank">More information</a>';
+$_lang['tinymce.config_fontsize_formats']                   = 'Fontsize formats';
+$_lang['tinymce.config_fontsize_formats_desc']              = 'This option allows you to override the font sizes displayed in the <code>fontsizeselect</code> dropdown toolbar button and the <code>fontsizes</code> menu item. Each item in the string should be space or comma-separated and include units. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#fontsize_formats" target="_blank">More information</a>';
+$_lang['tinymce.config_height']                             = 'Hoogte';
+$_lang['tinymce.config_height_desc']                        = 'This options sets the height of the entire editor, including the menubar, toolbars, and status bar. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#height" target="_blank">More information</a>';
+$_lang['tinymce.config_menubar']                            = 'Menubar';
+$_lang['tinymce.config_menubar_desc']                       = 'This option allows you to specify which menus should appear and the order that they appear in the menu bar at the top of TinyMCE. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#menubar" target="_blank">More information</a>';
+$_lang['tinymce.config_toolbar1']                           = 'Toolbar 1';
+$_lang['tinymce.config_toolbar1_desc']                      = 'This option allows you to specify the buttons and the order that they will appear on TinyMCE’s first toolbar. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#toolbarn" target="_blank">More information</a>';
+$_lang['tinymce.config_toolbar2']                           = 'Toolbar 2';
+$_lang['tinymce.config_toolbar2_desc']                      = 'This option allows you to specify the buttons and the order that they will appear on TinyMCE’s second toolbar. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#toolbarn" target="_blank">More information</a>';
+$_lang['tinymce.config_body_class']                         = 'Body Class';
+$_lang['tinymce.config_body_class_desc']                    = 'This option enables you to specify a class for the body of each editor instance. This class can then be used to do TinyMCE specific overrides in your <code>content_css</code>. <a href="https://www.tiny.cloud/docs/configure/content-appearance/#body_class" target="_blank">More information</a>';
+$_lang['tinymce.config_body_id']                            = 'Body ID';
+$_lang['tinymce.config_body_id_desc']                       = 'This option enables you to specify an id for the body of each editor instance. This id can then be used to do TinyMCE specific overrides in your <code>content_css</code>. <a href="https://www.tiny.cloud/docs/configure/content-appearance/#body_id" target="_blank">More information</a>';
+$_lang['tinymce.config_content_css']                        = 'Content CSS';
+$_lang['tinymce.config_content_css_desc']                   = 'It is usually desirable that TinyMCE’s editable area has the same styling as the surrounding content. Consistent styling is achieved with the <code>content_css</code> option, which enables you to extend external CSS into the editable area. <a href="https://www.tiny.cloud/docs/configure/content-appearance/#content_css" target="_blank">More information</a>';
+$_lang['tinymce.config_forced_root_block']                  = 'Forced root block';
+$_lang['tinymce.config_forced_root_block_desc']             = 'This option enables you to make sure that any non block elements or text nodes are wrapped in block elements. For example <code>&lt;strong&gt;something&lt;/strong&gt;</code> will result in output like: <code>&lt;p&gt;&lt;strong&gt;something&lt;/strong&gt;&lt;/p&gt;</code>. <a href="https://www.tiny.cloud/docs/configure/content-filtering/#forced_root_block" target="_blank">More information</a>';
+$_lang['tinymce.config_remove_trailing_brs']                = 'Remove trailing brs';
+$_lang['tinymce.config_remove_trailing_brs_desc']           = 'This option allows you to disable TinyMCE’s default behavior of removing <code>&lt;br&gt;</code> tags at the end of block elements. <a href="https://www.tiny.cloud/docs/configure/content-filtering/#remove_trailing_brs" target="_blank">More information</a>';
+$_lang['tinymce.config_convert_urls']                       = 'Convert URLs';
+$_lang['tinymce.config_convert_urls_desc']                  = 'This option enables you to control whether TinyMCE is to be smart and restore URLs to their original values. URLs are automatically converted (messed up) by default because the browser’s built-in logic works this way. There is no way to get the real URL unless you store it away. If you set this option to false it tries to keep these URLs intact. This option is set to true by default, which means URLs are forced to be either absolute or relative depending on the state of <code>relative_urls</code>. <a href="https://www.tiny.cloud/docs/configure/url-handling/#convert_urls" target="_blank">More information</a>';
+$_lang['tinymce.config_relative_urls']                      = 'Relative URLs';
+$_lang['tinymce.config_relative_urls_desc']                 = 'If this option is set to true, all URLs returned from the MCFileManager will be relative from the specified <code>document_base_url</code>. If it’s set to false all URLs will be converted to absolute URLs. <a href="https://www.tiny.cloud/docs/configure/localization/#language" target="_blank">More information</a>';
+$_lang['tinymce.config_image_advtab']                       = 'Image advanced  tab';
+$_lang['tinymce.config_image_advtab_desc']                  = 'This option adds an “Advanced” tab to the image dialog allowing you to add custom <code>styles</code>, <code>spacing</code> and <code>borders</code> to images. <a href="https://www.tiny.cloud/docs/plugins/image/#image_advtab" target="_blank">More information</a>';
+$_lang['tinymce.config_paste_as_text']                      = 'Paste as text';
+$_lang['tinymce.config_paste_as_text_desc']                 = 'This option enables you to set the default state of the <code>Paste as text</code> menu item, which is added by the <code>paste</code> plugin under the <code>Edit</code> menu dropdown. It’s disabled by default. <a href="https://www.tiny.cloud/docs/plugins/paste/#paste_as_text" target="_blank">More information</a>';
+$_lang['tinymce.config_table_advtab']                       = 'Table advanced tab';
+$_lang['tinymce.config_table_advtab_desc']                  = 'This option makes it possible to disable the advanced tab in the table dialog box. The advanced tab allows a user to input <code>style</code>, <code>border color</code and <code>background color</code> values. <a href="https://www.tiny.cloud/docs/plugins/table/#table_advtab" target="_blank">More information</a>';
+$_lang['tinymce.config_table_appearance_options']           = 'Table appearance options';
+$_lang['tinymce.config_table_appearance_options_desc']      = 'This option allows you to disable some of the options available to a user when inserting or editing a table. When set to false the following fields will not appear: <code>cell spacing</code, <code>cell padding</code>, <code>border</code> and <code>caption</code>. <a href="https://www.tiny.cloud/docs/plugins/table/#table_appearance_options" target="_blank">More information</a>';
+$_lang['tinymce.config_table_templates']                    = 'Template';
+$_lang['tinymce.config_table_templates_desc']               = 'This option lets you specify a predefined list of templates and will be requested as a URL that should produce a JSON output an array with each item having a <code>title</code>, <code>description</code> and <code>content/url</code>. <a href="https://www.tiny.cloud/docs/plugins/template/#templates" target="_blank">More information</a>';
+$_lang['tinymce.config_visualblocks_default_state']         = 'Visualblocks default state';
+$_lang['tinymce.config_visualblocks_default_state_desc']    = 'This option enables you to specify the default state of the Visual Blocks plugin. <a href="https://www.tiny.cloud/docs/plugins/template/#templates" target="_blank">More information</a>';
+$_lang['tinymce.config_browser_spellcheck']                 = 'Browser spellcheck';
+$_lang['tinymce.config_browser_spellcheck_desc']            = 'This option configures TinyMCE to use the browser’s native spell checker. browser_spellcheck is not available in either <code>Internet Explorer 8 or 9</code>, as neither browser has native spell checker functionality. For more complete browser support, we recommend using Spell Checker Pro. <a href="https://www.tiny.cloud/docs/plugins/template/#templates" target="_blank">More information</a>';
+$_lang['tinymce.config_wordcount']                          = 'Wordcount';
+$_lang['tinymce.config_wordcount_desc']                     = 'This option adds the functionality for counting words to the TinyMCE editor by placing a counter on the right edge of the status bar. <a href="https://www.tiny.cloud/docs/plugins/wordcount/" target="_blank">More information</a>';
+$_lang['tinymce.config_statusbar']                          = 'Statusbar';
+$_lang['tinymce.config_statusbar_desc']                     = 'This option allows you to specify whether or not TinyMCE should display the status bar at the bottom of the editor. <a href="https://www.tiny.cloud/docs/configure/editor-appearance/#statusbar" target="_blank">More information</a>';
+
+$_lang['tinymce.back_to_configs']                           = 'Back to configs';
+$_lang['tinymce.config_not_exists']                         = 'Config with the ID "[[+id]]" does not exists.';
+$_lang['tinymce.import_config_success']                     = 'There are [[+configs]] config(s) imported.';
+$_lang['tinymce.import_config_failure']                     = 'An error occurred while importing the configs.';

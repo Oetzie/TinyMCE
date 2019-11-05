@@ -1,0 +1,34 @@
+@import "../oxide/content.min.css";
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+p,
+blockquote,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+table,
+section,
+aside,
+article,
+dl,
+hr {
+    margin: 0 0 15px;
+}
+
+.mceSnippet {
+    text-align: center;
+    font-style: italic;
+    opacity: .5;
+    margin: 0 0 15px;
+}

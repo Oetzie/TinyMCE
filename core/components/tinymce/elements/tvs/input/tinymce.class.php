@@ -1,78 +1,52 @@
 <?php
 
-	/**
-	 * TinyMCE
-	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
-	 *
-	 * TinyMCE is free software; you can redistribute it and/or modify it under
-	 * the terms of the GNU General Public License as published by the Free Software
-	 * Foundation; either version 2 of the License, or (at your option) any later
-	 * version.
-	 *
-	 * TinyMCE is distributed in the hope that it will be useful, but WITHOUT ANY
-	 * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-	 * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-	 *
-	 * You should have received a copy of the GNU General Public License along with
-	 * TinyMCE; if not, write to the Free Software Foundation, Inc., 59 Temple Place,
-	 * Suite 330, Boston, MA 02111-1307 USA
-	 */
-	 
-	class TinyMCEInputRender extends modTemplateVarInputRender {
-		/**
-		 * @acces public.
-		 * @var Object.
-		 */
-		public $tinymce = null;
-		
-		/**
-		 * @acces public.
-		 * @return Array.
-		 */
-		public function getLexiconTopics() {
-			return array('tinymce:default');
-		}
-		
-		/**
-		 * @acces public.
-		 * @param $value Mixed.
-		 * @param $param Array.
-		 * @return Mixed.
-		 */
-		public function process($value, array $params = array()) {
-			$this->tinymce = $this->modx->getService('tinymce', 'TinyMCE', $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path').'components/tinymce/').'model/tinymce/');
+/**
+ * TinyMCE
+ *
+ * Copyright 2019 by Oene Tjeerd de Bruin <modx@oetzie.nl>
+ */
 
-			$this->setPlaceholder('toolbar1', $this->modx->getOption('toolbar1', $params, 'undo redo | bold italic underline strikethrough | styleselect bullist numlist outdent indent'));
-			$this->setPlaceholder('toolbar2', $this->modx->getOption('toolbar2', $params, ''));
-			$this->setPlaceholder('toolbar3', $this->modx->getOption('toolbar3', $params, ''));
-			$this->setPlaceholder('plugins', $this->modx->getOption('plugins', $params, ''));
-			
-			if ($this->modx->getOption('use_editor') && 'TinyMCE' == $this->modx->getOption('which_editor')) {
-				$properties = array(
-					'editor' 	=> $richtext,
-					'elements' 	=> array()
-				);
+class TinyMCEInputRender extends modTemplateVarInputRender
+{
+    /**
+     * @access public.
+     * @param Mixed $value.
+     * @param Array $params.
+     * @return Mixed.
+     */
+    public function process($value, array $params = [])
+    {
+        $this->modx->getService('tinymce', 'TinyMCE', $this->modx->getOption('tinymce.core_path', null, $this->modx->getOption('core_path') . 'components/tinymce/') . 'model/tinymce/');
 
-				$onRichTextEditorInit = $this->modx->invokeEvent('OnRichTextEditorInit', $properties);
-	            
-	            if (is_array($onRichTextEditorInit)) {
-					$onRichTextEditorInit = implode('', $onRichTextEditorInit);
-            	}
-            	
-            	$this->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
-			}
-		}
-		
-		/**
-		 * @access public.
-		 * @return String.
-		 */
-		public function getTemplate() {
-			return $this->tinymce->config['templates_path'].'tinymce.tpl';
-		}
-	}
-	
-	return 'TinyMCEInputRender';
-	
-?>
+        foreach ($params as $key => $param) {
+            $this->setPlaceholder($key, $param);
+        }
+
+        $useEditor = $this->modx->getOption('use_editor');
+        $whichEditor = $this->modx->getOption('which_editor');
+
+        if ($useEditor && !empty($whichEditor)) {
+            $onRichTextEditorInit = $this->modx->invokeEvent('OnRichTextEditorInit', [
+                'editor'    => $whichEditor,
+                'elements'  => []
+            ]);
+
+            if (is_array($onRichTextEditorInit)) {
+                $onRichTextEditorInit = implode('', $onRichTextEditorInit);
+            }
+
+            $this->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
+        }
+    }
+
+    /**
+     * @access public.
+     * @return String.
+     */
+    public function getTemplate()
+    {
+        return $this->modx->tinymce->config['templates_path'] . 'tvs/input/tinymce.tpl';
+    }
+}
+
+return 'TinyMCEInputRender';

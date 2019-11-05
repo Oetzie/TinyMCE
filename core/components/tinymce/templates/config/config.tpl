@@ -1,0 +1,1 @@
+<div id="tinymce-panel-config-div"></div>
