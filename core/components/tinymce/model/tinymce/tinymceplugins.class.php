@@ -19,9 +19,14 @@ class TinyMCEPlugins extends TinyMCE
 
         $this->modx->controller->addJavascript($this->config['js_url'] . 'mgr/extras/combo-tinymce.js');
 
+        $this->modx->controller->addJavascript($this->config['js_url'] . 'tinymce/tinymce.min.js');
+        $this->modx->controller->addJavascript($this->config['js_url'] . 'modtinymce.js');
+
         $this->modx->controller->addHtml('<script type="text/javascript">
             Ext.onReady(function() {
                 TinyMCE.config.connector_url = "' . $this->config['connector_url'] . '";
+                
+                ModTinyMCE.configs = ' . $this->modx->toJSON($this->formatConfigs($this->getConfigs())) . ';
             });
         </script>');
 
@@ -41,54 +46,6 @@ class TinyMCEPlugins extends TinyMCE
     public function onRichTextEditorRegister(array $properties = [])
     {
         $this->modx->event->output('TinyMCE');
-    }
-
-    /**
-     * @access public.
-     * @param Array $properties.
-     */
-    public function onRichTextEditorInit(array $properties = [])
-    {
-        $useEditor = $this->modx->getOption('use_editor');
-        $whichEditor = $this->modx->getOption('which_editor');
-
-        if ($useEditor && $whichEditor === 'TinyMCE') {
-            $this->modx->controller->addJavascript($this->config['js_url'] . 'tinymce/tinymce.min.js');
-            $this->modx->controller->addJavascript($this->config['js_url'] . 'modtinymce.js');
-
-            $this->modx->controller->addHtml('<script type="text/javascript">
-                Ext.onReady(function() {
-                    ModTinyMCE.configs = ' . $this->modx->toJSON($this->formatConfigs($this->getConfigs())) . ';
-                });
-            </script>');
-
-            if (isset($_GET['a']) && in_array($_GET['a'], ['resource/create', 'resource/update'], true)) {
-                if (isset($properties['resource']) && (int) $properties['resource']->get('richtext') === 1) {
-                    $this->modx->controller->addHtml('<script type="text/javascript">
-                        Ext.onReady(function() {
-                            MODx.loadRTE();
-                        });
-                    </script>');
-                }
-            }
-        }
-    }
-
-    /**
-     * @access public.
-     * @param Array $properties.
-     */
-    public function onRichTextBrowserInit(array $properties = [])
-    {
-        $useEditor = $this->modx->getOption('use_editor');
-        $whichEditor = $this->modx->getOption('which_editor');
-
-        if ($useEditor && $whichEditor === 'TinyMCE') {
-            $this->modx->controller->addJavascript($this->config['js_url'] . 'tinymce/tinymce.min.js');
-            $this->modx->controller->addJavascript($this->config['js_url'] . 'modtinymce.js');
-
-            $this->modx->event->output('ModTinyMCE.onBrowserSelectCallback');
-        }
     }
 
     /**

@@ -117,11 +117,11 @@ MODx.loadRTE = function(id, configId) {
 
         if (ModTinyMCE.configs['config_' + configId]) {
             Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs['config_' + configId]));
-        } else if (ModTinyMCE.configs['config_default']) {
-            Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs['config_default']));
+        } else if (ModTinyMCE.configs.config_default) {
+            Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs.config_default));
         }
 
-        tinyMCE.remove(config['selector']);
+        tinyMCE.remove(config.selector);
         tinyMCE.init(config);
     }
 };

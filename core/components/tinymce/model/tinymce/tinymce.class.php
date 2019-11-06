@@ -268,7 +268,6 @@ class TinyMCE
 
             //Image & file upload
             'automatic_uploads'             => '0',
-            'file_picker_callback'          => '',
             'file_picker_types'             => '',
             'images_dataimg_filter'         => '',
             'images_reuse_filename'         => '0',
@@ -353,61 +352,4 @@ class TinyMCE
             'visualchars_default_state'     => '0'
         ], $config);
     }
-
-    /**
-     * @access public.
-     * @param Array $config.
-     * @param Boolean $strict.
-     * @return Array.
-     */
-    /*public function parseConfig(array $config = [], $strict = true)
-    {
-        $booleanValues = ['hidden_input', 'branding', 'contextmenu_never_use_native', 'draggable_modal', 'elementpath',
-             'inline', 'statusbar', 'style_formats_autohide', 'style_formats_merge', 'content_css_cors', 'inline_boundaries',
-             'custom_colors', 'visual', 'allow_conditional_comments', 'allow_html_in_named_anchor', 'allow_unsafe_link_target',
-             'convert_fonts_to_spans', 'keep_styles', 'remove_trailing_brs', 'indent_use_margin', 'browser_spellcheck',
-             'allow_script_urls', 'convert_urls', 'relative_urls', 'remove_script_host', 'br_in_pre', 'end_container_on_empty_block',
-             'nowrap', 'typeahead_urls', 'image_advtab', 'link_context_toolbar', 'paste_as_text', 'paste_enable_default_filters',
-             'paste_filter_drop', 'paste_merge_formats', 'table_appearance_options', 'table_advtab', 'table_cell_advtab',
-             'table_row_advtab', 'table_resize_bars', 'visualblocks_default_state', 'visualchars_default_state'];
-
-        foreach ($booleanValues as $key) {
-            if (isset($config[$key])) {
-                $config[$key] = $config[$key] === true || $config[$key] === 'true' || (int) $config[$key] === 1;
-            }
-        }
-
-        if ($strict) {
-            $jsonEncodeValues = [
-                'external_plugins', 'menu', 'style_formats', 'color_map', 'forced_root_block_attrs', 'protect',
-                'formats', 'image_list', 'image_class_list', 'link_class_list', 'link_list', 'rel_list', 'target_list',
-                'table_default_attributes', 'table_default_styles', 'table_class_list', 'template_replace_values'
-            ];
-
-            foreach ($jsonEncodeValues as $key) {
-                if (isset($config[$key]) && is_string($config[$key])) {
-                    $config[$key] = json_decode($config[$key], true);
-                }
-            }
-
-            $plugins = explode(' ', $config['plugins']);
-
-            $pluginValues = [
-                'wordcount'     => 'wordcount',
-                'paste'         => 'paste_as_text',
-                'visualblocks'  => 'visualblocks_default_state',
-                'template'      => 'templates'
-            ];
-
-            foreach ($pluginValues as $key => $value) {
-                if (!empty($config[$value]) && !in_array($key, $plugins, true)) {
-                    $plugins[] = $key;
-                }
-            }
-
-            $config['plugins'] = implode(' ', $plugins);
-        }
-
-        return $config;
-    }*/
 }

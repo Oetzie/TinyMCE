@@ -66,22 +66,6 @@ class TinyMCEConfigManageManagerController extends TinyMCEManagerController
                 'id' => $properties['id']
             ]));
         }
-
-        $useEditor = $this->modx->getOption('use_editor');
-        $whichEditor = $this->modx->getOption('which_editor');
-
-        if ($useEditor && !empty($whichEditor)) {
-            $onRichTextEditorInit = $this->modx->invokeEvent('OnRichTextEditorInit', [
-                'editor'    => $whichEditor,
-                'elements'  => []
-            ]);
-
-            if (is_array($onRichTextEditorInit)) {
-                $onRichTextEditorInit = implode('', $onRichTextEditorInit);
-            }
-
-            $this->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
-        }
     }
 
     /**
