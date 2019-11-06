@@ -43,7 +43,7 @@ class TinyMCEConfigManageProcessor extends modObjectUpdateProcessor
      */
     public function beforeSave()
     {
-        $config = array_merge((array) json_decode($this->object->get('config'), true), $this->getProperties());
+        $config = $this->getProperties();
 
         foreach (['id', 'action', 'tinymce-demo'] as $key) {
             if (isset($config[$key])) {
@@ -57,7 +57,7 @@ class TinyMCEConfigManageProcessor extends modObjectUpdateProcessor
             }
         }
 
-        $this->object->set('config', json_encode($config));
+        $this->object->set('config', json_encode(array_merge((array) json_decode($this->object->get('config'), true), $config)));
 
         return parent::beforeSave();
     }

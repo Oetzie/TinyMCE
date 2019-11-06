@@ -87,7 +87,7 @@ var ModTinyMCE = {
         var plugins = config['plugins'].split(' ');
 
         Ext.iterate(pluginValues, function (key, plugin) {
-            if (parseInt(config[plugin]) === 1 || config[plugin] === true) {
+            if (parseInt(config[plugin]) === 1 || Ext.isEmpty(config[plugin])) {
                 if (plugins.indexOf(key) === -1) {
                     plugins.push(key);
                 }
