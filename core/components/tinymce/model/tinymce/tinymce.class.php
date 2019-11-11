@@ -277,7 +277,7 @@ class TinyMCE
             'images_upload_url'             => '',
 
             //Localization options
-            'directionality'                => $this->modx->getOption('directionality'),
+            'directionality'                => $this->modx->getOption('manager_direction', null, 'ltr'),
             'language'                      => $this->modx->getOption('manager_language'),
             'language_url'                  => '',
 
