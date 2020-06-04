@@ -54,7 +54,7 @@ TinyMCE.grid.Configs = function(config) {
     var columns = new Ext.grid.ColumnModel({
         columns     : [{
             header      : _('tinymce.label_config_name'),
-            dataIndex   : 'name',
+            dataIndex   : 'name_formatted',
             sortable    : true,
             editable    : false,
             width       : 250,
@@ -84,7 +84,7 @@ TinyMCE.grid.Configs = function(config) {
         baseParams  : {
             action      : 'mgr/configs/getlist'
         },
-        fields      : ['id', 'name', 'description', 'default', 'editedon'],
+        fields      : ['id', 'name', 'description', 'default', 'editedon', 'name_formatted'],
         paging      : true,
         pageSize    : MODx.config.default_per_page > 30 ? MODx.config.default_per_page : 30,
         sortBy      : 'name'
@@ -113,7 +113,7 @@ Ext.extend(TinyMCE.grid.Configs, MODx.grid.Grid, {
             text    : '<i class="x-menu-item-icon icon icon-edit"></i>' + _('tinymce.config_update'),
             handler : this.updateConfig,
             scope   : this
-        }, {
+        }, '-', {
             text    : '<i class="x-menu-item-icon icon icon-cogs"></i>' + _('tinymce.config_manage'),
             handler : this.manageConfig,
             scope   : this

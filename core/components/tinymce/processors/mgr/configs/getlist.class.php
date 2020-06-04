@@ -79,7 +79,9 @@ class TinyMCEGetListProcessor extends modObjectGetListProcessor
     */
     public function prepareRow(xPDOObject $object)
     {
-        $array = $object->toArray();
+        $array = array_merge($object->toArray(), [
+            'name_formatted' => $object->get('name') . ' (' . $object->get('id') . ')'
+        ]);
 
         if (in_array($object->get('editedon'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
             $array['editedon'] = '';

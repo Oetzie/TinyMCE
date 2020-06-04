@@ -7,10 +7,40 @@ var ModTinyMCE = {
             event.target.save();
         }).on('change', function(event) {
             event.target.save();
+
+            var field = Ext.getCmp(event.target.id);
+
+            if (field) {
+                field.fireEvent('change', field);
+            }
         }).on('focus', function(event) {
             Ext.get(event.target.editorContainer).addClass('mce-focus');
+
+            var field = Ext.getCmp(event.target.id);
+
+            if (field) {
+                field.fireEvent('focus', field);
+            }
         }).on('blur', function(event) {
             Ext.get(event.target.editorContainer).removeClass('mce-focus');
+
+            var field = Ext.getCmp(event.target.id);
+
+            if (field) {
+                field.fireEvent('blur', field);
+            }
+        }).on('keydown', function(event) {
+            var field = Ext.getCmp(event.target.id);
+
+            if (field) {
+                field.fireEvent('keydown', field);
+            }
+        }).on('keyup', function(event) {
+            var field = Ext.getCmp(event.target.id);
+
+            if (field) {
+                field.fireEvent('keyup', field);
+            }
         });
 
         editor.addShortcut('meta+' + (MODx.config.keymap_save || 's'), '', function() {
@@ -62,10 +92,22 @@ var ModTinyMCE = {
         var removeValues = ['content_css'];
 
         var pluginValues = {
-            wordcount       : 'wordcount',
-            paste           : 'paste_as_text',
-            visualblocks    : 'visualblocks_default_state',
-            template        : 'templates'
+            wordcount       : {
+                name            : 'wordcount',
+                remove          : true
+            },
+            paste           : {
+                name            : 'paste_as_text',
+                remove          : false
+            },
+            visualblocks    : {
+                name            : 'visualblocks_default_state',
+                remove          : false
+            },
+            template        : {
+                name            : 'templates',
+                remove          : true
+            }
         };
 
         boolValues.forEach(function (key) {
@@ -84,39 +126,47 @@ var ModTinyMCE = {
             }
         });
 
-        var plugins = config['plugins'].split(' ');
+        var plugins = config.plugins.split(' ');
 
         Ext.iterate(pluginValues, function (key, plugin) {
-            if (parseInt(config[plugin]) === 1 || Ext.isEmpty(config[plugin])) {
+            if (config[plugin.name] === true || parseInt(config[plugin.name]) === 1) {
                 if (plugins.indexOf(key) === -1) {
                     plugins.push(key);
                 }
             } else {
-                if (plugins.indexOf(key) !== -1) {
+                if (plugin.remove && plugins.indexOf(key) !== -1) {
                     delete plugins[plugins.indexOf(key)];
                 }
             }
         });
 
-        config['plugins'] = plugins.join(' ');
+        config.plugins = plugins.join(' ');
 
         return config;
     }
 };
 
-MODx.loadRTE = function(id, configId) {
+MODx.loadRTE = function(id, config) {
     var selector = '#' + (id || 'ta');
 
-    if (ModTinyMCE.configs['config_default']) {
-        var config = {
+    if (ModTinyMCE.configs.config_default) {
+        config = config || {};
+
+        if (typeof config !== 'object') {
+            config = {
+                id  : config
+            };
+        }
+
+        Ext.apply(config, {
             selector                : selector,
             theme                   : 'silver',
             file_picker_callback    : ModTinyMCE.onBrowserCallback,
             setup                   : ModTinyMCE.onSetupCallback
-        };
+        });
 
-        if (ModTinyMCE.configs['config_' + configId]) {
-            Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs['config_' + configId]));
+        if (ModTinyMCE.configs['config_' + config.id]) {
+            Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs['config_' + config.id]));
         } else if (ModTinyMCE.configs.config_default) {
             Ext.apply(config, ModTinyMCE.onFormatConfig(ModTinyMCE.configs.config_default));
         }

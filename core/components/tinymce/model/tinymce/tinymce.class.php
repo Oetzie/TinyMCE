@@ -56,7 +56,7 @@ class TinyMCE
             'css_url'           => $assetsUrl . 'css/',
             'assets_url'        => $assetsUrl,
             'connector_url'     => $assetsUrl . 'connector.php',
-            'version'           => '1.3.0',
+            'version'           => '1.4.0',
             'branding_url'      => $this->modx->getOption('tinymce.branding_url', null, ''),
             'branding_help_url' => $this->modx->getOption('tinymce.branding_url_help', null, '')
         ], $config);

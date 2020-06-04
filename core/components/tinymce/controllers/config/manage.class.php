@@ -55,7 +55,7 @@ class TinyMCEConfigManageManagerController extends TinyMCEManagerController
     /**
      * @access public.
      * @param Array $properties.
-     * @return Mixd.
+     * @return Mixed.
      */
     public function process(array $properties = [])
     {
