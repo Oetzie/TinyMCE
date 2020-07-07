@@ -3,7 +3,7 @@
     "lowCaseName": "tinymce",
     "description": "A TinyMCE solution for MODX Revolution.",
     "author": "Oetzie.nl",
-    "version": "1.4.0-pl",
+    "version": "1.4.1-pl",
     "package":{
         "menus": [{
             "text": "tinymce",
@@ -22,7 +22,8 @@
                     "OnRichTextEditorInit",
                     "OnRichTextBrowserInit",
                     "OnTVInputRenderList",
-                    "OnTVInputPropertiesList"
+                    "OnTVInputPropertiesList",
+                    "OnClientSettingsRegisterSettings"
                 ]
             }]
         },

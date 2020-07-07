@@ -65,4 +65,26 @@ class TinyMCEPlugins extends TinyMCE
     {
         $this->modx->event->output($this->config['elements_path'] . 'tvs/options/');
     }
+
+    /**
+     * @access public.
+     * @param Array $properties.
+     */
+    public function OnClientSettingsRegisterSettings(array $properties = [])
+    {
+        $this->modx->controller->addLexiconTopic('tinymce:clientsettings');
+
+        if (isset($properties['settings'])) {
+            $properties['settings']['tinymce'] = [
+                'xtype'         => 'textarea',
+                'name'          => $this->modx->lexicon('clientsettings.tinymce.name'),
+                'fields'        => [[
+                    'xtype'         => 'tinymce-combo-config',
+                    'name'          => 'config',
+                    'title'         => $this->modx->lexicon('clientsettings.tinymce.label_config'),
+                    'description'   => $this->modx->lexicon('clientsettings.tinymce.label_config_desc')
+                ]]
+            ];
+        }
+    }
 }
