@@ -6,7 +6,7 @@ TinyMCE
 Version: 1.4.1
 Released: 2020-07-07
 ----------------------
-- ClientSettings plugin support
+- ClientSettings plugin support (https://github.com/Oetzie/ClientSettings)
 
 ---------------------
 Version: 1.4.0
