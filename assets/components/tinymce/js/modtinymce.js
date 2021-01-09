@@ -74,7 +74,7 @@ var ModTinyMCE = {
 
         var boolValues = [
             'hidden_input', 'branding', 'contextmenu_never_use_native', 'draggable_modal', 'elementpath',
-            'inline', 'statusbar', 'style_formats_autohide', 'style_formats_merge', 'content_css_cors', 'inline_boundaries',
+            'inline', 'statusbar', 'wordcount', 'style_formats_autohide', 'style_formats_merge', 'content_css_cors', 'inline_boundaries',
             'custom_colors', 'visual', 'allow_conditional_comments', 'allow_html_in_named_anchor', 'allow_unsafe_link_target',
             'convert_fonts_to_spans', 'keep_styles', 'remove_trailing_brs', 'indent_use_margin', 'browser_spellcheck',
             'allow_script_urls', 'convert_urls', 'relative_urls', 'remove_script_host', 'br_in_pre', 'end_container_on_empty_block',
@@ -129,13 +129,18 @@ var ModTinyMCE = {
         var plugins = config.plugins.split(' ');
 
         Ext.iterate(pluginValues, function (key, plugin) {
-            if (config[plugin.name] === true || parseInt(config[plugin.name]) === 1) {
+            if (
+                (typeof config[plugin.name] === 'boolean' && config[plugin.name] === true) ||
+                (typeof config[plugin.name] === 'string' && config[plugin.name] !== '')
+            ) {
                 if (plugins.indexOf(key) === -1) {
                     plugins.push(key);
                 }
             } else {
-                if (plugin.remove && plugins.indexOf(key) !== -1) {
-                    delete plugins[plugins.indexOf(key)];
+                if (plugins.indexOf(key) !== -1) {
+                    if (plugin.remove) {
+                        delete plugins[plugins.indexOf(key)];
+                    }
                 }
             }
         });

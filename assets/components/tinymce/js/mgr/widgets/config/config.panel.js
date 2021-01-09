@@ -19,6 +19,7 @@ TinyMCE.panel.Config = function(config) {
                 bodyCssClass: 'panel-desc'
             }, {
                 xtype       : 'modx-vtabs',
+                deferredRender : false,
                 items       : [{
                     title       : _('tinymce.config_category_integration'),
                     labelAlign  : 'top',

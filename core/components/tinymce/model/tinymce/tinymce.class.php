@@ -56,7 +56,7 @@ class TinyMCE
             'css_url'           => $assetsUrl . 'css/',
             'assets_url'        => $assetsUrl,
             'connector_url'     => $assetsUrl . 'connector.php',
-            'version'           => '1.4.1',
+            'version'           => '1.5.0',
             'branding_url'      => $this->modx->getOption('tinymce.branding_url', null, ''),
             'branding_help_url' => $this->modx->getOption('tinymce.branding_url_help', null, '')
         ], $config);
@@ -205,6 +205,7 @@ class TinyMCE
             'skin'                          => 'modx',
             'skin_url'                      => '',
             'statusbar'                     => '1',
+            'wordcount'                     => '0',
             'style_formats'                 => '[{"title": "Headings", "items": [{"title": "Heading 1", "format": "h1"}, {"title": "Heading 2", "format": "h2"}, {"title": "Heading 3", "format": "h3"}, {"title": "Heading 4", "format": "h4"}, {"title": "Heading 5", "format": "h5"}, {"title": "Heading 6", "format": "h6"}]}, {"title": "Inline", "items": [{"title": "Bold", "format": "bold"}, {"title": "Italic", "format": "italic"}, {"title": "Underline", "format": "underline"}, {"title": "Strikethrough", "format": "strikethrough"}, {"title": "Superscript", "format": "superscript"}, {"title": "Subscript", "format": "subscript"}, {"title": "Code", "format": "code"}]}, {"title": "Blocks", "items": [{"title": "Paragraph", "format": "p"}, {"title": "Blockquote", "format": "blockquote"}, {"title": "Div", "format": "div"}, {"title": "Pre", "format": "pre"}]}, {"title": "Align", "items": [{"title": "Left", "format": "alignleft"}, {"title": "Center", "format": "aligncenter"},  {"title": "Right", "format": "alignright"}, {"title": "Justify", "format": "alignjustify"}]}]',
             'style_formats_autohide'        => '0',
             'style_formats_merge'           => '0',
