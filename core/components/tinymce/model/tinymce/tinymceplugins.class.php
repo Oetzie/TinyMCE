@@ -43,6 +43,20 @@ class TinyMCEPlugins extends TinyMCE
      * @access public.
      * @param Array $properties.
      */
+    public function onRichTextBrowserInit(array $properties = [])
+    {
+        $useEditor = $this->modx->getOption('use_editor');
+        $whichEditor = $this->modx->getOption('which_editor');
+
+        if ($useEditor && $whichEditor === 'TinyMCE') {
+            $this->modx->event->output('ModTinyMCE.onBrowserSelectCallback');
+        }
+    }
+
+    /**
+     * @access public.
+     * @param Array $properties.
+     */
     public function onRichTextEditorRegister(array $properties = [])
     {
         $this->modx->event->output('TinyMCE');
